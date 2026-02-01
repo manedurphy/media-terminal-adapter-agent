@@ -20,9 +20,9 @@ AM_CFLAGS =
 
 ACLOCAL_AMFLAGS = -I m4
 
-noinst_LTLIBRARIES = libCcspMtaAgent_middle_layer_src.la
-
-libCcspMtaAgent_middle_layer_src_la_CFLAGS = $(AM_CFLAGS) $(MTA_CFLAGS)
-libCcspMtaAgent_middle_layer_src_la_CPPFLAGS = -I$(top_srcdir)/source/TR-181/board_sbapi -I$(top_srcdir)/source/TR-181/middle_layer_src -I$(top_srcdir)/source/TR-181/include -I$(top_srcdir)/source/Custom
-libCcspMtaAgent_middle_layer_src_la_SOURCES = cosa_x_cisco_com_mta_internal.c plugin_main.c plugin_main_apis.c cosa_x_cisco_com_mta_dml.c mta_agent_rbus_handlers.c ../../MtaAgentSsp/TR104_webconfig.c
-libCcspMtaAgent_middle_layer_src_la_LDFLAGS = -lccsp_common -lhal_mta -lmsgpackc -lrbus
+# noinst_LTLIBRARIES = libCcspMtaAgent_middle_layer_src.la
+#
+# libCcspMtaAgent_middle_layer_src_la_CFLAGS = $(AM_CFLAGS) $(MTA_CFLAGS)
+# libCcspMtaAgent_middle_layer_src_la_CPPFLAGS = -I$(top_srcdir)/source/TR-181/board_sbapi -I$(top_srcdir)/source/TR-181/middle_layer_src -I$(top_srcdir)/source/TR-181/include -I$(top_srcdir)/source/Custom
+# libCcspMtaAgent_middle_layer_src_la_SOURCES = cosa_x_cisco_com_mta_internal.c plugin_main.c plugin_main_apis.c cosa_x_cisco_com_mta_dml.c mta_agent_rbus_handlers.c ../../MtaAgentSsp/TR104_webconfig.c
+# libCcspMtaAgent_middle_layer_src_la_LDFLAGS = -lccsp_common -lhal_mta -lmsgpackc -lrbus

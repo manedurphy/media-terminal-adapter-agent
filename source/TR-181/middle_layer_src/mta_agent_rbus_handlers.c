@@ -521,16 +521,16 @@ static rbusError_t rbus_get_handler(rbusHandle_t handle,
                 ("MTALog_GetParamStringValue failed for %s\n", param_name));
             rc = RBUS_ERROR_BUS_ERROR;
           }
-        } else if (strcmp(child_parameter.type, "boolean") == 0) {
-          BOOL val = FALSE;
-          if (MTALog_GetParamBoolValue(NULL, param_short_name, &val)) {
-            rbusValue_SetBoolean(value, val);
-            rc = RBUS_ERROR_SUCCESS;
-          } else {
-            CcspTraceError(
-                ("MTALog_GetParamBoolValue failed for %s\n", param_name));
-            rc = RBUS_ERROR_BUS_ERROR;
-          }
+          // } else if (strcmp(child_parameter.type, "boolean") == 0) {
+          //   BOOL val = FALSE;
+          //   if (MTALog_GetParamBoolValue(NULL, param_short_name, &val)) {
+          //     rbusValue_SetBoolean(value, val);
+          //     rc = RBUS_ERROR_SUCCESS;
+          //   } else {
+          //     CcspTraceError(
+          //         ("MTALog_GetParamBoolValue failed for %s\n", param_name));
+          //     rc = RBUS_ERROR_BUS_ERROR;
+          //   }
         } else if (strcmp(child_parameter.type, "uint32_t") == 0) {
           ULONG val = 0;
           if (MTALog_GetParamUlongValue(NULL, param_short_name, &val)) {
@@ -571,16 +571,16 @@ static rbusError_t rbus_get_handler(rbusHandle_t handle,
                 ("DECTLog_GetParamStringValue failed for %s\n", param_name));
             rc = RBUS_ERROR_BUS_ERROR;
           }
-        } else if (strcmp(child_parameter.type, "boolean") == 0) {
-          BOOL val = FALSE;
-          if (DECTLog_GetParamBoolValue(NULL, param_short_name, &val)) {
-            rbusValue_SetBoolean(value, val);
-            rc = RBUS_ERROR_SUCCESS;
-          } else {
-            CcspTraceError(
-                ("DECTLog_GetParamBoolValue failed for %s\n", param_name));
-            rc = RBUS_ERROR_BUS_ERROR;
-          }
+          // } else if (strcmp(child_parameter.type, "boolean") == 0) {
+          //   BOOL val = FALSE;
+          //   if (DECTLog_GetParamBoolValue(NULL, param_short_name, &val)) {
+          //     rbusValue_SetBoolean(value, val);
+          //     rc = RBUS_ERROR_SUCCESS;
+          //   } else {
+          //     CcspTraceError(
+          //         ("DECTLog_GetParamBoolValue failed for %s\n", param_name));
+          //     rc = RBUS_ERROR_BUS_ERROR;
+          //   }
         } else if (strcmp(child_parameter.type, "uint32_t") == 0) {
           ULONG val = 0;
           if (DECTLog_GetParamUlongValue(NULL, param_short_name, &val)) {
@@ -770,6 +770,10 @@ static rbusError_t rbus_get_handler(rbusHandle_t handle,
 static rbusError_t rbus_set_handler(rbusHandle_t handle,
                                     rbusProperty_t property,
                                     rbusSetHandlerOptions_t *opts) {
+  (void)handle;
+  (void)property;
+  (void)opts;
+
   return RBUS_ERROR_SUCCESS;
 }
 
