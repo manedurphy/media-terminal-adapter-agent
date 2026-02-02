@@ -135,7 +135,7 @@ int  cmd_dispatch(int  command)
 
             #endif
 
-            int ret = ccsp_dml_init("MTAAgentComponent", "./config/mta_dml_config.json", mta_agent_get_handler(), mta_agent_set_handler());
+            int ret = ccsp_dml_init("MTAAgentComponent", "/usr/ccsp/mta/mta_dml_config.json", mta_agent_get_handler(), mta_agent_set_handler());
             if (ret != 0) {
                 CcspTraceError(("Failed to initialize data model with RBUS\n"));
                 return -1;
