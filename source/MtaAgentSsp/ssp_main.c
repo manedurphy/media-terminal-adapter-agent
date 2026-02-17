@@ -740,7 +740,11 @@ retry:
 
     if ( g_bActive )
     {
+        #if 0
         ssp_cancel_pnm(gpPnmStartCfg);
+        #endif
+
+        ccsp_dml_shutdown();
 
         g_bActive = FALSE;
     }
