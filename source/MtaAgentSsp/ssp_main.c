@@ -100,7 +100,7 @@ int  cmd_dispatch(int  command)
     switch ( command )
     {
             case	'e' :
-            if #0
+            #if 0
                 CcspTraceInfo(("Connect to bus daemon...\n"));
 
             {
@@ -177,7 +177,7 @@ int  cmd_dispatch(int  command)
                 break;
 
         case    'c':
-            if #0
+            #if 0
                 ssp_cancel_pnm(gpPnmStartCfg);
             #endif
                 ccsp_dml_shutdown();
