@@ -61,6 +61,9 @@
 int CosaDmlTR104DataSet(char *pString,int bootup);
 #endif
 
+#include "ccsp_dml_lib.h"
+#include "mta_agent_rbus_handlers.h"
+
 #include "cap.h"
 static cap_user appcaps;
 
@@ -97,7 +100,7 @@ int  cmd_dispatch(int  command)
     switch ( command )
     {
             case	'e' :
-
+            if #0
                 CcspTraceInfo(("Connect to bus daemon...\n"));
 
             {
@@ -128,6 +131,15 @@ int  cmd_dispatch(int  command)
                 g_bActive = TRUE;
 
                 CcspTraceInfo(("MTA Agent Module loaded successfully...\n"));
+            #endif
+
+            int ret = ccsp_dml_init("MTAAgentComponent", "/usr/ccsp/mta/mta_dml_config.json", mta_agent_get_handler(), mta_agent_set_handler());
+            if (ret != 0) {
+                CcspTraceError(("Failed to initialize data model with RBUS\n"));
+                return -1;
+            }
+
+            CcspTraceInfo(("MTAAgent RBUS Module loaded successfully...\n"));
 
             break;
 
@@ -165,9 +177,10 @@ int  cmd_dispatch(int  command)
                 break;
 
         case    'c':
-
+            if #0
                 ssp_cancel_pnm(gpPnmStartCfg);
-
+            #endif
+                ccsp_dml_shutdown();
                 break;
 
         default:
