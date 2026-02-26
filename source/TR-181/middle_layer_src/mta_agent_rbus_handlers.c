@@ -93,7 +93,7 @@ static rbusError_t rbus_get_handler(rbusHandle_t handle,
       char *param_short_name = (char *)(param_name + prefix_len);
       child_parameter_t child_parameter = parent_object->parameters[i];
 
-      printf("param_name: %s, child_parameter.name: %s, param)short_name: %s\n", param_name, child_parameter.name, param_short_name);
+      printf("param_name: %s, child_parameter.name: %s, param_short_name: %s, child_parameter.type: %s\n", param_name, child_parameter.name, child_parameter.type, param_short_name);
 
       if (strcmp(param_name, child_parameter.name) == 0) {
         if (strcmp(child_parameter.type, "string") == 0) {
