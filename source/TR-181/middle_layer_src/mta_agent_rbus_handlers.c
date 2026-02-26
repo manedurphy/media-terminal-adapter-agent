@@ -41,8 +41,8 @@ static rbusError_t rbus_get_handler(rbusHandle_t handle,
     rbusValue_Release(value);
     return RBUS_ERROR_ELEMENT_DOES_NOT_EXIST;
   }
-  CcspTraceDebug(("Found parent object: %s for parameter: %s\n", parent_object->name,
-                   param_name));
+  CcspTraceDebug(("Found parent object: %s for parameter: %s with %zd child parameters\n", parent_object->name,
+                   param_name, parent_object->child_parameter_count));
 
   if (strcmp(parent_object->name, "Device.X_CISCO_COM_MTA_V6") == 0) {
     // All parameters under the "Device.X_CISCO_COM_MTA" parent object
@@ -92,6 +92,8 @@ static rbusError_t rbus_get_handler(rbusHandle_t handle,
     for (size_t i = 0; i < parent_object->child_parameter_count; i++) {
       char *param_short_name = (char *)(param_name + prefix_len);
       child_parameter_t child_parameter = parent_object->parameters[i];
+
+      printf("param_name: %s, child_parameter.name: %s, param)short_name: %s\n", param_name, child_parameter.name, param_short_name);
 
       if (strcmp(param_name, child_parameter.name) == 0) {
         if (strcmp(child_parameter.type, "string") == 0) {
