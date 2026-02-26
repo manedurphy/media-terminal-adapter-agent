@@ -41,6 +41,8 @@ static rbusError_t rbus_get_handler(rbusHandle_t handle,
     rbusValue_Release(value);
     return RBUS_ERROR_ELEMENT_DOES_NOT_EXIST;
   }
+  CcspTraceDebug(("Found parent object: %s for parameter: %s\n", parent_object->name,
+                   param_name));
 
   if (strcmp(parent_object->name, "Device.X_CISCO_COM_MTA_V6") == 0) {
     // All parameters under the "Device.X_CISCO_COM_MTA" parent object
