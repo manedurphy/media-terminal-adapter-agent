@@ -19,7 +19,7 @@ static rbusError_t rbus_get_handler(rbusHandle_t handle,
     return RBUS_ERROR_BUS_ERROR;
   }
 
-  CcspTraceInfo(("rbusValue initialized successfully for %s\n", param_name));
+  CcspTraceDebug(("rbusValue initialized successfully for %s\n", param_name));
 
   const char *last_dot = strrchr(param_name, '.');
   if (last_dot == NULL) {
@@ -32,7 +32,15 @@ static rbusError_t rbus_get_handler(rbusHandle_t handle,
   // data model value.
   char parent_name[256] = {0};
   strncpy(parent_name, param_name, last_dot - param_name);
+
+  CcspTraceDebug(("Extracted parent object name: %s from parameter name: %s\n",
+                   parent_name, param_name));
   parent_object_t *parent_object = get_parent_object(parent_name);
+  if (!parent_object) {
+    CcspTraceError(("Parent object not found for parameter: %s\n", param_name));
+    rbusValue_Release(value);
+    return RBUS_ERROR_ELEMENT_DOES_NOT_EXIST;
+  }
 
   if (strcmp(parent_object->name, "Device.X_CISCO_COM_MTA_V6") == 0) {
     // All parameters under the "Device.X_CISCO_COM_MTA" parent object
