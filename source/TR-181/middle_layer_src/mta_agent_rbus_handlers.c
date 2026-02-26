@@ -34,15 +34,16 @@ static rbusError_t rbus_get_handler(rbusHandle_t handle,
   strncpy(parent_name, param_name, last_dot - param_name);
 
   CcspTraceDebug(("Extracted parent object name: %s from parameter name: %s\n",
-                   parent_name, param_name));
+                  parent_name, param_name));
   parent_object_t *parent_object = get_parent_object(parent_name);
   if (!parent_object) {
     CcspTraceError(("Parent object not found for parameter: %s\n", param_name));
     rbusValue_Release(value);
     return RBUS_ERROR_ELEMENT_DOES_NOT_EXIST;
   }
-  CcspTraceDebug(("Found parent object: %s for parameter: %s with %zd child parameters\n", parent_object->name,
-                   param_name, parent_object->child_parameter_count));
+  CcspTraceDebug(
+      ("Found parent object: %s for parameter: %s with %zd child parameters\n",
+       parent_object->name, param_name, parent_object->child_parameter_count));
 
   if (strcmp(parent_object->name, "Device.X_CISCO_COM_MTA_V6") == 0) {
     // All parameters under the "Device.X_CISCO_COM_MTA" parent object
@@ -93,12 +94,19 @@ static rbusError_t rbus_get_handler(rbusHandle_t handle,
       char *param_short_name = (char *)(param_name + prefix_len);
       child_parameter_t child_parameter = parent_object->parameters[i];
 
-      printf("param_name: %s, child_parameter.name: %s, param_short_name: %s, child_parameter.type: %s\n", param_name, child_parameter.name, child_parameter.type, param_short_name);
+      CcspTraceDebug(("CAN YOU SEE THIS: param_name: %s, child_parameter.name: "
+                      "%s, param_short_name: %s, child_parameter.type: %s\n",
+                      param_name, child_parameter.name, child_parameter.type,
+                      param_short_name));
 
       if (strcmp(param_name, child_parameter.name) == 0) {
         if (strcmp(child_parameter.type, "string") == 0) {
           char parameter_value[256] = {0};
           ULONG parameter_value_len = sizeof(parameter_value);
+          CcspTraceDebug(
+              ("Attempting to get string value for parameter: %s using API: "
+               "X_CISCO_COM_MTA_GetParamStringValue with short name: %s\n",
+               param_name, param_short_name));
           if (X_CISCO_COM_MTA_GetParamStringValue(NULL, param_short_name,
                                                   parameter_value,
                                                   &parameter_value_len)) {
