@@ -731,6 +731,8 @@ X_CISCO_COM_MTA_GetParamUlongValue
     errno_t                         rc            = -1;
     int                             ind           = -1;
 
+    CcspTraceDebug(("WE ARE IN THE HAL NOW: ParamName=%s\n", ParamName));
+
     rc = strcmp_s("MTAResetCount", strlen("MTAResetCount"), ParamName, &ind);
     ERR_CHK(rc);
     if((!ind) && (rc == EOK))
@@ -863,6 +865,8 @@ X_CISCO_COM_MTA_GetParamUlongValue
             *puLong = Info.SecondaryDNS.Value;
             return TRUE;
         }
+
+        CcspTraceDebug(("len_1: %d, len_2: %s\n", strlen("PrimaryDHCPServer"), strlen(ParamName)));
         rc = strcmp_s("PrimaryDHCPServer", strlen("PrimaryDHCPServer"), ParamName, &ind);
         ERR_CHK(rc);
         if((!ind) && (rc == EOK))
