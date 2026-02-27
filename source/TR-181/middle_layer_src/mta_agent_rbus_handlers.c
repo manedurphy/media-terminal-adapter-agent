@@ -105,11 +105,11 @@ static rbusError_t rbus_get_handler(rbusHandle_t handle,
           if (X_CISCO_COM_MTA_GetParamStringValue(NULL, param_short_name,
                                                   parameter_value,
                                                   &parameter_value_len)) {
-            rbusValue_SetString(value, parameter_value);
             CcspTraceDebug(
                 ("Successfully got string value for parameter: %s, value: "
                  "%s\n",
                  param_name, parameter_value));
+            rbusValue_SetString(value, parameter_value);
             rc = RBUS_ERROR_SUCCESS;
           } else {
             CcspTraceError(
@@ -130,16 +130,16 @@ static rbusError_t rbus_get_handler(rbusHandle_t handle,
         } else if (strcmp(child_parameter.type, "uint32") == 0) {
           ULONG val = 0;
           CcspTraceDebug(
-              ("Attempting to get ulong value for parameter: %s using API: "
+              ("Attempting to get uint32 value for parameter: %s using API: "
                "X_CISCO_COM_MTA_GetParamUlongValue with short name: %s\n",
                param_name, param_short_name));
           if (X_CISCO_COM_MTA_GetParamUlongValue(NULL, param_short_name,
                                                  &val)) {
-            rbusValue_SetUInt32(value, val);
             CcspTraceDebug(
-                ("Successfully got ulong value for parameter: %s, value: "
+                ("Successfully got uint32 value for parameter: %s, value: "
                  "%lu\n",
                  param_name, val));
+            rbusValue_SetUInt32(value, val);
             rc = RBUS_ERROR_SUCCESS;
           } else {
             CcspTraceError(
