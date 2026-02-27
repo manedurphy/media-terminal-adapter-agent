@@ -867,6 +867,7 @@ X_CISCO_COM_MTA_GetParamUlongValue
         ERR_CHK(rc);
         if((!ind) && (rc == EOK))
         {
+            CcspTraceDebug(("CAN YOU SEE THIS\n"));
             *puLong = Info.PrimaryDHCPServer.Value;
             // AnscCopyString(pValue, Info.PrimaryDHCPServer);
             return TRUE;
