@@ -131,8 +131,10 @@ static rbusError_t rbus_get_handler(rbusHandle_t handle,
           ULONG val = 0;
           CcspTraceDebug(
               ("Attempting to get uint32 value for parameter: %s using API: "
-               "X_CISCO_COM_MTA_GetParamUlongValue with short name: %s and len: %d\n",
+               "X_CISCO_COM_MTA_GetParamUlongValue with short name: %s and "
+               "len: %d\n",
                param_name, param_short_name, strlen(param_short_name)));
+          fprintf(stderr, "FORCING A LOG\n");
           if (X_CISCO_COM_MTA_GetParamUlongValue(NULL, param_short_name,
                                                  &val)) {
             CcspTraceDebug(

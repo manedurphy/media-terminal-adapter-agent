@@ -726,6 +726,8 @@ X_CISCO_COM_MTA_GetParamUlongValue
     COSA_MTA_DHCP_INFO              Info;
     memset(&Info, 0, sizeof(COSA_MTA_DHCP_INFO));
 
+    fprintf(stderr, "WE ARE IN THE HAL NOW: ParamName=%s\n", ParamName);
+
     PCOSA_DATAMODEL_MTA             pMyObject     = (PCOSA_DATAMODEL_MTA )g_pCosaBEManager->hMTA;
     PCOSA_MTA_PKTC                  pPktc         = (PCOSA_MTA_PKTC      )&pMyObject->Pktc;
     errno_t                         rc            = -1;
