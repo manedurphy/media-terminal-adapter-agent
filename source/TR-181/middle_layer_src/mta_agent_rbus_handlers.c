@@ -89,11 +89,6 @@ static rbusError_t rbus_get_handler(rbusHandle_t handle,
   } else if (strcmp(parent_object->name, "Device.X_CISCO_COM_MTA") == 0) {
     // All parameters under the "Device.X_CISCO_COM_MTA" parent object
 
-    CcspTraceDebug(("CAN YOU SEE THIS: param_name: %s, child_parameter.name: "
-                    "%s, child_parameter.type: %s, param_short_name: %s\n",
-                    param_name, child_parameter.name, child_parameter.type,
-                    param_short_name));
-
     size_t prefix_len = strlen("Device.X_CISCO_COM_MTA.");
     for (size_t i = 0; i < parent_object->child_parameter_count; i++) {
       char *param_short_name = (char *)(param_name + prefix_len);
