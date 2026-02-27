@@ -133,7 +133,7 @@
             "List_Of_Def": [
                 {
                     "PrimaryDHCPServer": {
-                        "type": "ulong",
+                        "type": "uint32",
                         "writable": false
                     }
                 },
