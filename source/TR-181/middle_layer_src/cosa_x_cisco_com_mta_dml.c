@@ -822,6 +822,7 @@ X_CISCO_COM_MTA_GetParamUlongValue
         {
             return FALSE;
         }
+        CcspTraceDebug(("WE GOT DHCP INFO\n"));
         rc = strcmp_s("IPAddress", strlen("IPAddress"), ParamName, &ind);
         ERR_CHK(rc);
         if((!ind) && (rc == EOK))
@@ -866,7 +867,7 @@ X_CISCO_COM_MTA_GetParamUlongValue
             return TRUE;
         }
 
-        CcspTraceDebug(("len_1: %d, len_2: %s\n", strlen("PrimaryDHCPServer"), strlen(ParamName)));
+        CcspTraceDebug(("len_1: %d, len_2: %d\n", strlen("PrimaryDHCPServer"), strlen(ParamName)));
         rc = strcmp_s("PrimaryDHCPServer", strlen("PrimaryDHCPServer"), ParamName, &ind);
         ERR_CHK(rc);
         if((!ind) && (rc == EOK))
