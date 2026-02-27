@@ -822,9 +822,11 @@ X_CISCO_COM_MTA_GetParamUlongValue
     {
         if (CosaDmlMTAGetDHCPInfo(NULL, &Info) != ANSC_STATUS_SUCCESS)
         {
+            fprintf(stderr, "WE DID NOT GET DHCP INFO\n");
             return FALSE;
         }
         CcspTraceDebug(("WE GOT DHCP INFO\n"));
+        fprintf(stderr, "WE GOT DHCP INFO\n");
         rc = strcmp_s("IPAddress", strlen("IPAddress"), ParamName, &ind);
         ERR_CHK(rc);
         if((!ind) && (rc == EOK))
@@ -870,11 +872,13 @@ X_CISCO_COM_MTA_GetParamUlongValue
         }
 
         CcspTraceDebug(("len_1: %d, len_2: %d\n", strlen("PrimaryDHCPServer"), strlen(ParamName)));
+        fprintf(stderr,"len_1: %d, len_2: %d\n", strlen("PrimaryDHCPServer"), strlen(ParamName));
         rc = strcmp_s("PrimaryDHCPServer", strlen("PrimaryDHCPServer"), ParamName, &ind);
         ERR_CHK(rc);
         if((!ind) && (rc == EOK))
         {
             CcspTraceDebug(("CAN YOU SEE THIS\n"));
+            fprintf(stderr, "CAN YOU SEE THIS\n");
             *puLong = Info.PrimaryDHCPServer.Value;
             // AnscCopyString(pValue, Info.PrimaryDHCPServer);
             return TRUE;
