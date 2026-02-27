@@ -127,7 +127,7 @@ static rbusError_t rbus_get_handler(rbusHandle_t handle,
                             param_name));
             rc = RBUS_ERROR_BUS_ERROR;
           }
-        } else if (strcmp(child_parameter.type, "uint32_t") == 0) {
+        } else if (strcmp(child_parameter.type, "ulong") == 0) {
           ULONG val = 0;
           if (X_CISCO_COM_MTA_GetParamUlongValue(NULL, param_short_name,
                                                  &val)) {
